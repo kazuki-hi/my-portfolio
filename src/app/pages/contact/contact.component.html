@@ -1,1 +1,59 @@
-<p>contact works!</p>
+<section class="contact">
+  <h2>お問い合わせ</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">お名前</label>
+      <input id="name" type="text" formControlName="name" placeholder="例：山田 太郎" />
+      <!-- @if (name?.touched && name?.invalid) {
+      <div class="error">お名前は必須です</div>
+      } -->
+      <div class="error" [style.visibility]="(name?.touched && name?.invalid) ? 'visible' : 'hidden'">お名前は必須です</div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス</label>
+      <input id="email" type="email" formControlName="email" placeholder="例：example@example.com" />
+      <!-- @if (email?.touched && email?.hasError('required')) {
+      <div class="error">メールアドレスは必須です</div>
+      }
+      @if (email?.touched && email?.hasError('email')) {
+      <div class="error">メールアドレスの形式が正しくありません</div>
+      } -->
+      <div class="error"
+        [style.visibility]="(email?.touched && (email?.hasError('required') || email?.hasError('email')))? 'visible' : 'hidden'">
+        @if (email?.hasError('required')) {
+        メールアドレスは必須です
+        }
+        @else () {
+        メールアドレスの形式が正しくありません
+        }
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="message">メッセージ</label>
+      <textarea id="message" rows="5" formControlName="message" placeholder="ご用件を詳しくご記入ください"></textarea>
+      <!-- @if (message?.touched && message?.invalid){
+      <div class="error">メッセージは必須です</div>
+      } -->
+      <div class="error" [style.visibility]="(message?.touched && message?.invalid) ? 'visible' : 'hidden' ">メッセージは必須です
+      </div>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="contactForm.invalid"
+      [ngClass]="{ 'disabled': contactForm.invalid}">送信</button>
+  </form>
+
+  @if (isModalOpen) {
+  <div class="modal">
+    <div class="modal-content">
+      <h3>送信完了</h3>
+      <p>お問い合わせありがとうございます。内容を確認のうえ、ご連絡いたします。</p>
+      <button class="btn" (click)="closeModal()">Homeへ</button>
+    </div>
+  </div>
+  }
+</section>

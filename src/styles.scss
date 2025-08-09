@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(30, 30, 30);
+  color: rgb(245, 225, 225);
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #2a2a2a inset;
+  -webkit-text-fill-color: #f0f0f0;
+}
+
+input,
+textarea {
+  caret-color: #f0f0f0;
+  font-family: system-ui;
+}
+
+html {
+  font-size: 16px;
+}
+
+h2 {
+  margin: 26px 0;
+  text-align: center;
+}

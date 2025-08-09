@@ -1,0 +1,88 @@
+.contact {
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #f0f0f0;
+
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.5rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background: #2a2a2a;
+      color: #f0f0f0;
+    }
+
+    &:invalid.ng-touched {
+      border-color: #f44336;
+    }
+  }
+
+  .error {
+    min-height: 1rem;
+    color: #f44336;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn {
+    background: #4fc3f7;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+
+    &:hover {
+      background: #0288d1;
+    }
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .modal-content {
+    background: #2a2a2a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: #f0f0f0;
+  }
+
+  button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+}
