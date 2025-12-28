@@ -1,1 +1,49 @@
-<p>works works!</p>
+<section class="works-section">
+  <h2 class="section-title">My Works</h2>
+
+  @if (works.length > 0) {
+  <div class="works-grid">
+    @for(work of works; track work.title){
+    <div class="work-card">
+      @if (work.image && !work.loadError) {
+      <img [src]="work.image" [alt]="work.title" class="work-image" (error)="work.loadError = true" />
+      } @else {
+      <div class="image-placeholder">
+        <span class="placeholder-text">No Image</span>
+      </div>
+      }
+      <div class="work-content">
+        <h3>{{ work.title }}</h3>
+        <p class="description">{{ work.description }}</p>
+
+        <ul class="tech-stack">
+          @for (tech of work.techStack; track $index) {
+          <li>{{ tech }}</li>
+          }
+        </ul>
+
+        @if (work.highlights) {
+        <ul class="highlights">
+          @for (point of work.highlights; track $index) {
+          <li>{{ point }}</li>
+          }
+        </ul>
+        }
+
+
+      </div>
+      <div class="links">
+        @if (work.demoUrl) {
+        <a [href]="work.demoUrl" target="_blank">Live Demo</a>
+        }
+        @if (work.githubUrl) {
+        <a [href]="work.githubUrl" target="_blank">GitHub</a>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  }@else {
+  <p class="no-works">現在掲載中の作品はありません。</p>
+  }
+</section>

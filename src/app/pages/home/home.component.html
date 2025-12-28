@@ -5,14 +5,41 @@
 <!-- <app-navbar></app-navbar> -->
 
 <section class="home">
-  <h2>Welcome to My Portfolio</h2>
+  <h2 appScrollAnim>Welcome to My Portfolio</h2>
 
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-content" appScrollAnim>
       <h1 class="greeting">はじめまして、私は <span class="name">{{name}}</span> と申します。</h1>
       <p>{{ introduction }}</p>
       <!-- <p class="subtitle">Angular × Java を中心に活動する Web エンジニア</p> -->
 
+      @if(hobbies.length > 0){
+      <div class="info-section" appScrollAnim>
+        <h3>Hobbies</h3>
+        <table class="info-table">
+          @for (hobby of hobbies; track hobby.name) {
+          <tr>
+            <td class="label">{{ hobby.name }}</td>
+            <td class="value">{{ hobby.description }}</td>
+          </tr>
+          }
+        </table>
+      </div>
+      }
+      @if(certifications.length > 0){
+      <div class="info-section" appScrollAnim>
+        <h3>Certifications</h3>
+        <table class="info-table">
+          @for (cert of certifications; track cert.name) {
+          <tr>
+            <td class="label">{{ cert.name }}</td>
+            <td class="value">{{ cert.date }}</td>
+          </tr>
+          }
+        </table>
+      </div>
+      }
+      <!-- <div class="cta-buttons">
       <!-- <div class="cta-buttons">
       <a routerLink="/skills" class="btn">スキルを見る</a>
       <a routerLink="/contact" class="btn secondary">お問い合わせ</a>
