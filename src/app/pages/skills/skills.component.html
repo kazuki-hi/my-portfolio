@@ -1,11 +1,21 @@
 <section class="skills">
   <h2>スキル一覧</h2>
   <div class="skills-grid">
-    <div class="skill-card" *ngFor="let skill of skills">
-      <img [src]="skill.icon" [alt]="skill.name" class="skill-icon" />
+    @for (skill of skills; track skill.name) {
+    <div class="skill-card">
+      <div class="icon-container">
+        @if (!skill.loadError) {
+        <img [src]="getIconUrl(skill)" [alt]="skill.name" class="skill-icon" (error)="handleIconError(skill)" />
+        } @else {
+        <div class="icon-placeholder">
+          {{ skill.name.charAt(0).toUpperCase() }}
+        </div>
+        }
+      </div>
       <h3>{{ skill.name }}</h3>
       <p class="level">レベル: {{ skill.level }}</p>
       <p class="description">{{ skill.description }}</p>
     </div>
+    }
   </div>
 </section>
